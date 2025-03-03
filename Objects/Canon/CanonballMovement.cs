@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class CanonballMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
@@ -13,17 +13,21 @@ public class CanonballMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.CompareTag("Block") || col.CompareTag("Box"))
+        if(col.CompareTag("Block") || col.CompareTag("Box") || col.CompareTag("StrijdBlij"))
         {
             Instantiate(Object, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
         else if(col.CompareTag("Player"))
         {
-            col.GetComponent<PlayerBehavior>().Die();
             Instantiate(Object, transform.position, transform.rotation);
-            Destroy(this.gameObject);
+            StartCoroutine(DestroyThis());
         }
     }
 
+    IEnumerator DestroyThis()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(this.gameObject);
+    }
 }

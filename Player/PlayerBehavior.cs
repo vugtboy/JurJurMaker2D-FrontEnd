@@ -29,15 +29,27 @@ public class PlayerBehavior : MonoBehaviour
     public Transform BoxHoldingPoint;
     public PickableObject box;
     public float airFriction;
+    public GameObject deathPlayer;
+    public Respawner respawner;
+    public LayerMask Bad;
+    public Transform BadLayerCheckPosition;
+    public Vector3 BadLayerCheckSize;
+    public GameObject myDeathBody;
     void Start()
     {
+        respawner = GameObject.Find("Respawner").GetComponent<Respawner>();
         scaleSize = transform.localScale.x;
     }
 
     void Update()
     {
+        //doodgaan
+        if (EnemyCheck())
+        {
+            Die();
+        }
         //doos alleen optillen als je een doos voor je hebt staan
-        if (GroundCheck() && Input.GetKeyDown(KeyCode.S) && boxFinder.box != null)
+        if (GroundCheck() && Input.GetKeyDown(KeyCode.LeftShift) && boxFinder.box != null && !holdingBox)
         {
             holdingBox = true;
             this.box = boxFinder.box;
@@ -46,7 +58,7 @@ public class PlayerBehavior : MonoBehaviour
             anim.SetBool("HasBox", true);
         }
         //doos alleen optillen als je een doos voor je hebt staan
-        if (GroundCheck() && Input.GetKey(KeyCode.S) && boxFinder.box != null)
+        if (GroundCheck() && Input.GetKey(KeyCode.LeftShift) && boxFinder.box != null && !holdingBox)
         {
             holdingBox = true;
             this.box = boxFinder.box;
@@ -55,7 +67,7 @@ public class PlayerBehavior : MonoBehaviour
             anim.SetBool("HasBox", true);
         }
         //box alleen gooien als we er een beet hebben
-        if (Input.GetKeyUp(KeyCode.S) && holdingBox && box != null)
+        if (Input.GetKeyUp(KeyCode.LeftShift) && holdingBox && box != null)
         {
             holdingBox = false;
             box.Trow(direction);
@@ -104,7 +116,7 @@ public class PlayerBehavior : MonoBehaviour
                     anim.SetTrigger("WallJump");
                     wallJumpMovementCooldown = 0.3f;
                     isWallJumping = true;
-                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpSpeed / 1.5f);
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpSpeed / 1.2f);
                     actualSpeed = speed * -direction;
                     if (direction == -1)
                     {
@@ -151,47 +163,50 @@ public class PlayerBehavior : MonoBehaviour
         //niet lopen omdat beide kanten op gelopen moet worden
         if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D) || !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
         {
-            //in de lucht moet het afremmen veel langzamer gebeuren
-            if(!GroundCheck())
+            if (wallJumpMovementCooldown <= 0)
             {
-                if (actualSpeed > 0)
-                    actualSpeed -= Time.deltaTime * airFriction;
-                if (actualSpeed < 0)
-                    actualSpeed += Time.deltaTime * airFriction;
-            }
-            //als hij op de grond is remt hij veel sneller af
-            else
-            {
-                if (actualSpeed > 0)
-                    actualSpeed -= Time.deltaTime * 5 * sliperyness;
-                if (actualSpeed < 0)
-                    actualSpeed += Time.deltaTime * 5 * sliperyness;
-                //snelheid naar absoluut nul zetten als hij niet wil lopen
-                if (actualSpeed > -0.25f && actualSpeed < 0.25f)
-                    actualSpeed = 0;
-            }
-            //als je tegen een muur aan loopt snelheid verminderen om niet te blijven plakken
-            if(WallCheck())
-            {
-                if (direction == -1 && !isWallJumping && actualSpeed < 0)
+                //in de lucht moet het afremmen veel langzamer gebeuren
+                if (!GroundCheck())
                 {
-                    actualSpeed = 0;
+                    if (actualSpeed > 0)
+                        actualSpeed -= Time.deltaTime * airFriction;
+                    if (actualSpeed < 0)
+                        actualSpeed += Time.deltaTime * airFriction;
                 }
-                else if(direction == 1 && !isWallJumping && actualSpeed > 0)
+                //als hij op de grond is remt hij veel sneller af
+                else
                 {
-                    actualSpeed = 0;
+                    if (actualSpeed > 0)
+                        actualSpeed -= Time.deltaTime * 5 * sliperyness;
+                    if (actualSpeed < 0)
+                        actualSpeed += Time.deltaTime * 5 * sliperyness;
+                    //snelheid naar absoluut nul zetten als hij niet wil lopen
+                    if (actualSpeed > -0.25f && actualSpeed < 0.25f)
+                        actualSpeed = 0;
                 }
-            }
-            //als je met je rug tegen een muur aanloopt zorgen dat de snelheid nul word
-            else if(WallBackCheck())
-            {
-                if (direction == -1 && !isWallJumping && actualSpeed < 0)
+                //als je tegen een muur aan loopt snelheid verminderen om niet te blijven plakken
+                if (WallCheck())
                 {
-                    actualSpeed = 0;
+                    if (direction == -1 && !isWallJumping && actualSpeed < 0)
+                    {
+                        actualSpeed = 0;
+                    }
+                    else if (direction == 1 && !isWallJumping && actualSpeed > 0)
+                    {
+                        actualSpeed = 0;
+                    }
                 }
-                else if (direction == 1 && !isWallJumping && actualSpeed > 0)
+                //als je met je rug tegen een muur aanloopt zorgen dat de snelheid nul word
+                else if (WallBackCheck())
                 {
-                    actualSpeed = 0;
+                    if (direction == -1 && !isWallJumping && actualSpeed < 0)
+                    {
+                        actualSpeed = 0;
+                    }
+                    else if (direction == 1 && !isWallJumping && actualSpeed > 0)
+                    {
+                        actualSpeed = 0;
+                    }
                 }
             }
         }
@@ -239,7 +254,7 @@ public class PlayerBehavior : MonoBehaviour
             if (!WallCheck() && direction == -1)
             {
                 //sneller afremmen als op grond
-                if(GroundCheck())
+                if (GroundCheck())
                 {
                     if (actualSpeed > 0)
                     {
@@ -255,11 +270,11 @@ public class PlayerBehavior : MonoBehaviour
                 {
                     if (actualSpeed > 0)
                     {
-                        actualSpeed -= Time.deltaTime * 10;
+                        actualSpeed -= Time.deltaTime * 10 * airFriction;
                     }
                     else if (actualSpeed > -speed)
                     {
-                        actualSpeed -= Time.deltaTime * 5;
+                        actualSpeed -= Time.deltaTime * 5 * airFriction;
                     }
                 }
             }
@@ -303,8 +318,23 @@ public class PlayerBehavior : MonoBehaviour
         return Physics2D.OverlapBox(WallSlideCheckPosition.position, WallSlideCheckSize, 0.2f, WallLayer);
     }
 
+    bool EnemyCheck()
+    {
+        return Physics2D.OverlapBox(BadLayerCheckPosition.position, BadLayerCheckSize, 0.2f, Bad);
+    }
+
     public void Die()
     {
-
+        myDeathBody = Instantiate(deathPlayer, new Vector3(transform.position.x + 0.05f, transform.position.y, 0), transform.rotation);
+        myDeathBody.transform.localScale = new Vector3(0.8666667f * direction, 0.8666667f, 0);
+        transform.parent.gameObject.SetActive(false);
+        if(holdingBox)
+        {
+            holdingBox = false;
+            box.Trow(direction);
+            box = null;
+            anim.SetBool("HasBox", false);
+        }        
+        respawner.Respawn();
     }
 }

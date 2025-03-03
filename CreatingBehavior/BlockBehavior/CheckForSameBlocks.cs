@@ -9,10 +9,22 @@ public class CheckForSameBlocks : MonoBehaviour
     {
         if (col.CompareTag("Block"))
         {
-            if (col.GetComponent<BlockAllignement>().type == parrent.type)
+            if (col.GetComponent<BlockAllignement>() != null && col.GetComponent<BlockAllignement>().type == parrent.type)
             {
                 parrent.positions[position] = true;
                 parrent.UpdateTexture();
+            }
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.CompareTag("Block"))
+        {
+            if (col.GetComponent<BlockAllignement>() != null && col.GetComponent<BlockAllignement>().type == parrent.type)
+            {
+                parrent.UpdateTexture();
+                parrent.positions[position] = true;
             }
         }
     }
@@ -21,7 +33,7 @@ public class CheckForSameBlocks : MonoBehaviour
     {
         if (col.CompareTag("Block"))
         {
-            if (col.GetComponent<BlockAllignement>().type == parrent.type)
+            if (col.GetComponent<BlockAllignement>() != null && col.GetComponent<BlockAllignement>().type == parrent.type)
             {
                 parrent.positions[position] = false;
                 parrent.UpdateTexture();
