@@ -15,6 +15,7 @@ public class Respawner : MonoBehaviour
     public int WaitForRespawn;
     public bool previous;
     public bool ability;
+    public int Coins;
     void Start()
     {
         previous = true;
@@ -37,6 +38,7 @@ public class Respawner : MonoBehaviour
 
     public void ResetCheckpoint()
     {
+        Coins = 0;
         StopCoroutine("Reset");
         UIResetAnimator.SetTrigger("Break");
         checkPoint = false;

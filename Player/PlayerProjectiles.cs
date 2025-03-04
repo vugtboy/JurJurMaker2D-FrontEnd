@@ -9,7 +9,7 @@ public class PlayerProjectiles : MonoBehaviour
     public GameObject PowerTrumpet;
     void Update()
     {
-        if(reShoot < 0 && Input.GetKeyDown(KeyCode.W) && hasAbility)
+        if(reShoot <= 0 && Input.GetKeyDown(KeyCode.W) && hasAbility)
         {
             GameObject prefab = Instantiate(Projectile, transform.position, transform.rotation);
             if(transform.localScale.x < 0)

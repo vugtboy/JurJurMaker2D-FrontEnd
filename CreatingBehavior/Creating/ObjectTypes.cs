@@ -1,25 +1,30 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
 public class ObjectTypes : MonoBehaviour
 {
-    public GameObject currentSelected;
     public GameObject[] allObjects;
     public int selected;
     public bool canPlaceHere;
     public Vector3 CreatePosition;
-    public List<GameObject> placedObjects = new List<GameObject>();
+    public List<GameObject> placedObjects;
     public SpriteRenderer selectedBlockTexture;
     public bool isplacing;
     public bool isMovingBlock;
+    private VisualObjectList inventory;
+    private Animator notification;
     void Start()
     {
+        notification = GameObject.Find("#Notefication").GetComponent<Animator>();
+        inventory = GameObject.Find("InventoryList").GetComponent<VisualObjectList>();
         canPlaceHere = true;
         selected = 1;
     }
 
     void Update()
     {
+        inventory.Selected = selected;
         if(Input.GetMouseButtonUp(0))
         {
             isplacing = false;
@@ -31,11 +36,15 @@ public class ObjectTypes : MonoBehaviour
         CreatePosition = new Vector3(MathF.Round(transform.position.x), MathF.Round(transform.position.y), 0);
         if(Input.GetMouseButton(0) && !Input.GetMouseButton(1))
         {    
-            if (CheckIfCanPlace())
+            if (CheckIfCanPlace() && !LimetedItemMax())
             {
                 GameObject obj = Instantiate(allObjects[selected], CreatePosition, Quaternion.identity);
                 placedObjects.Add(obj);
-            }
+            }            
+        }
+        if (Input.GetMouseButtonDown(0) && LimetedItemMax() && CheckIfCanPlace())
+        {
+            notification.SetBool("Note", true);
         }
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll < 0)
@@ -60,7 +69,7 @@ public class ObjectTypes : MonoBehaviour
                 selected = 0;
             }
         }
-        selectedBlockTexture.sprite = allObjects[selected].GetComponent<SpriteRenderer>().sprite;
+        selectedBlockTexture.sprite = inventory.Objects[selected].GetComponent<Image>().sprite;
     }
 
     bool CheckIfCanPlace()
@@ -94,5 +103,25 @@ public class ObjectTypes : MonoBehaviour
         }
         isplacing = true;
         return true;
+    }
+
+    bool LimetedItemMax()
+    {
+        foreach (GameObject Object in placedObjects)
+        {
+            if(Object.CompareTag("Weapon") && selected == 11)
+            {
+                return true;
+            }
+            if (Object.CompareTag("Egg") && selected == 12)
+            {
+                return true;
+            }
+            if (Object.CompareTag("Ending") && selected == 15)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

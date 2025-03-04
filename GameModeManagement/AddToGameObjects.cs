@@ -11,6 +11,6 @@ public class AddToGameObjects : MonoBehaviour
 
     void OnDestroy()
     {
-        Debug.Log("OhJaJoh");
+        modeManager.PlayObjects.Remove(this.gameObject);
     }
 }

@@ -1,16 +1,14 @@
 using UnityEngine;
-
+using System.Collections.Generic;
+using System;
 public class VisualObjectList : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public GameObject[] Objects;
+    public int Selected;
+    public Transform Selector;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        Selector.position = Objects[Selected].transform.position;
     }
 }

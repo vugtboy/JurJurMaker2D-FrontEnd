@@ -33,6 +33,7 @@ public class EnemyPatrol : MonoBehaviour
         }
         else
         {
+            anim.SetBool("Falling", true);
             somehowInAir = true;
         }
     }

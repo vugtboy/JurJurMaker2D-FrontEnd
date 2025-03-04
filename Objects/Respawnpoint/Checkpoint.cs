@@ -14,14 +14,12 @@ public class Checkpoint : MonoBehaviour
         {
             respawner.checkPoint = true;
             respawner.respawnPoint = transform.position;
-            if(col.GetComponent<PlayerProjectiles>().hasAbility)
+            int coins = col.GetComponent<CoinCounter>().Counter;
+            respawner.Coins = coins;
+            if (col.GetComponent<PlayerProjectiles>().hasAbility)
             {
                 respawner.ability = true;
             }
         }
-    }
-    void Update()
-    {
-        
     }
 }
