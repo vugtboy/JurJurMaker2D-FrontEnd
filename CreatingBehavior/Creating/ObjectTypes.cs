@@ -14,6 +14,7 @@ public class ObjectTypes : MonoBehaviour
     public bool isMovingBlock;
     private VisualObjectList inventory;
     private Animator notification;
+    public AudioSource placeSound;
     void Start()
     {
         notification = GameObject.Find("#Notefication").GetComponent<Animator>();
@@ -38,6 +39,7 @@ public class ObjectTypes : MonoBehaviour
         {    
             if (CheckIfCanPlace() && !LimetedItemMax())
             {
+                placeSound.Play();
                 GameObject obj = Instantiate(allObjects[selected], CreatePosition, Quaternion.identity);
                 placedObjects.Add(obj);
             }            

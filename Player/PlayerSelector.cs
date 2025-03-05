@@ -11,9 +11,11 @@ public class PlayerSelector : MonoBehaviour
     public Animator PlayerAnim;
     public RuntimeAnimatorController[] Animators;
     private Image uiPlayer;
+    private PlayerBehavior player;
 
     void Start()
     {
+        player = GetComponentInChildren<PlayerBehavior>();
         uiWeapon = GameObject.Find("#Weapon").GetComponent<Image>();
     }
 
@@ -24,5 +26,6 @@ public class PlayerSelector : MonoBehaviour
         PlayerPlay.sprite = theBoys[selectedPlayer];
         PlayerAnim.runtimeAnimatorController = Animators[selectedPlayer];
         uiWeapon.sprite = weapons[selectedPlayer];
+        player.playerIndex = selectedPlayer;
     }
 }

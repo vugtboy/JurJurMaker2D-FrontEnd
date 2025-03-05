@@ -13,8 +13,29 @@ public class PickableObject : MonoBehaviour
     public Vector3 groundCheckSize;
     public float direction;
     public BoxCollider2D box;
+    public AudioSource audioSource;
+    public bool onGround;
+    void Start()
+    {
+        if(Grounded())
+        {
+            onGround = true;
+        }
+    }
     void Update()
     {
+        if(Grounded() && !holded)
+        {
+            if (!onGround)
+            {
+                onGround = true;
+                audioSource.Play();
+            }
+        }
+        if(!Grounded())
+        {
+            onGround = false;
+        }
         //als we in een muur zijn geplaatst eruit gaan
         if(WallCheck())
         {
@@ -31,6 +52,7 @@ public class PickableObject : MonoBehaviour
             box.enabled = true;
         }
     }
+
     //gooien
     public void Trow(float direction)
     {
@@ -41,7 +63,7 @@ public class PickableObject : MonoBehaviour
 
     bool Grounded()
     {
-        return Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0.2f, groundCheckLayer);
+        return Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0.1f, groundCheckLayer);
     }
 
     bool WallCheck()

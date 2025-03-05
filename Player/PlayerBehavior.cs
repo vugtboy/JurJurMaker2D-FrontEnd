@@ -35,8 +35,11 @@ public class PlayerBehavior : MonoBehaviour
     public Transform BadLayerCheckPosition;
     public Vector3 BadLayerCheckSize;
     public GameObject myDeathBody;
+    private PlayerAudioManager audioManage;
+    public int playerIndex;
     void Start()
     {
+        audioManage = GetComponent<PlayerAudioManager>();
         respawner = GameObject.Find("Respawner").GetComponent<Respawner>();
         scaleSize = transform.localScale.x;
     }
@@ -113,6 +116,7 @@ public class PlayerBehavior : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    audioManage.PlayJumpSound(playerIndex);
                     anim.SetTrigger("WallJump");
                     wallJumpMovementCooldown = 0.3f;
                     isWallJumping = true;
@@ -151,6 +155,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             if(coyoteTime > 0)
             {
+                audioManage.PlayJumpSound(playerIndex);
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpSpeed);
                 jumpAgainTimer = 0;
             }
@@ -325,10 +330,12 @@ public class PlayerBehavior : MonoBehaviour
 
     public void Die()
     {
+        audioManage.PlayDeathSound();
+        
         myDeathBody = Instantiate(deathPlayer, new Vector3(transform.position.x + 0.05f, transform.position.y, 0), transform.rotation);
         myDeathBody.transform.localScale = new Vector3(0.8666667f * direction, 0.8666667f, 0);
         transform.parent.gameObject.SetActive(false);
-        if(holdingBox)
+        if (holdingBox)
         {
             holdingBox = false;
             box.Trow(direction);

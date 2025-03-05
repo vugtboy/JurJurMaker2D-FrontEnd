@@ -12,6 +12,7 @@ public class BlockAllignement : MonoBehaviour
     public BoxCollider2D col;
     public BoxCollider2D col2;
     public bool isMoving;
+    public bool pirate;
     void Start()
     {
         Object = GameObject.Find("#Placer#").GetComponent<ObjectTypes>();
@@ -19,7 +20,7 @@ public class BlockAllignement : MonoBehaviour
 
     void Update()
     {
-        if (isMoving)
+        if (isMoving && !pirate)
         {
             foreach (GameObject checker in checkers)
             {

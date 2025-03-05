@@ -12,20 +12,16 @@ public class EnemyPatrol : MonoBehaviour
     public Transform airCheckPosition;
     public Transform wallCheck;
     public Vector3 wallCheckSize;
-    public bool somehowInAir;
-    void Start()
-    {
-
-    }
 
     void Update()
     {
-        if (GroundCheck())
+        if (AirCheck() || GroundCheck())
         {
             rb.linearVelocity = new Vector2(speed * direction, rb.linearVelocity.y);
         }
         if (AirCheck())
         {
+            anim.SetBool("Falling", false);
             if (!GroundCheck() || WallCheck())
             {
                 SwitchDirection();
@@ -34,7 +30,6 @@ public class EnemyPatrol : MonoBehaviour
         else
         {
             anim.SetBool("Falling", true);
-            somehowInAir = true;
         }
     }
 

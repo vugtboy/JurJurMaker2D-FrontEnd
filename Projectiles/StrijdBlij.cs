@@ -7,6 +7,7 @@ public class StrijdBlij : MonoBehaviour
     public float bounceForce;
     public int bounces;
     public float existanceTime;
+    public AudioSource bounceSound;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,6 +31,7 @@ public class StrijdBlij : MonoBehaviour
         if(col.gameObject.CompareTag("Block") || col.gameObject.CompareTag("Box"))
         {
             existanceTime -= 1f;
+            bounceSound.Play();
         }
     }
 }

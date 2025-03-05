@@ -7,10 +7,25 @@ public class PlayerProjectiles : MonoBehaviour
     public float reShoot;
     public GameObject powerUp;
     public GameObject PowerTrumpet;
+    private PlayerAudioManager audioManager;
+    private PlayerBehavior playerBehavior;
+    void Start()
+    {
+        playerBehavior = GetComponent<PlayerBehavior>();
+        audioManager = GetComponent<PlayerAudioManager>();
+    }
+    void OnEnable()
+    {
+        if (!hasAbility)
+        {
+            Destroy(PowerTrumpet);
+        }
+    }
     void Update()
     {
         if(reShoot <= 0 && Input.GetKeyDown(KeyCode.W) && hasAbility)
         {
+            audioManager.PlayAtackSound(playerBehavior.playerIndex);
             GameObject prefab = Instantiate(Projectile, transform.position, transform.rotation);
             if(transform.localScale.x < 0)
             {
