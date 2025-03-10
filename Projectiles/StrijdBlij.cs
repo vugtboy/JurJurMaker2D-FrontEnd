@@ -31,7 +31,10 @@ public class StrijdBlij : MonoBehaviour
         if(col.gameObject.CompareTag("Block") || col.gameObject.CompareTag("Box"))
         {
             existanceTime -= 1f;
-            bounceSound.Play();
+            if (bounceSound.gameObject.activeSelf)
+            {
+                bounceSound.Play();
+            }
         }
     }
 }

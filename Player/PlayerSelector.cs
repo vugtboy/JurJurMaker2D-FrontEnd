@@ -12,15 +12,18 @@ public class PlayerSelector : MonoBehaviour
     public RuntimeAnimatorController[] Animators;
     private Image uiPlayer;
     private PlayerBehavior player;
-
+    private TemporaryWorldStorer world;
     void Start()
     {
+        world = GameObject.Find("#WorldTaker").GetComponent<TemporaryWorldStorer>();
         player = GetComponentInChildren<PlayerBehavior>();
         uiWeapon = GameObject.Find("#Weapon").GetComponent<Image>();
+        SetPlayer(world.world.player);
     }
 
     public void SetPlayer(int selectedPlayer)
     {
+        world.world.player = selectedPlayer;
         this.selectedPlayer = selectedPlayer;
         PlayerEdit.sprite = theBoys[selectedPlayer];
         PlayerPlay.sprite = theBoys[selectedPlayer];

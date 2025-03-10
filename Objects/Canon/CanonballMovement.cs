@@ -13,12 +13,18 @@ public class CanonballMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.CompareTag("Block") || col.CompareTag("Box") || col.CompareTag("StrijdBlij"))
+        if(col.CompareTag("Block") || col.CompareTag("Box"))
         {
             Instantiate(Object, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
-        else if(col.CompareTag("Player"))
+        else if(col.CompareTag("Atack"))
+        {
+            Destroy(col.gameObject);
+            Instantiate(Object, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+        }
+        else if(col.CompareTag("DeathBody"))
         {
             Instantiate(Object, transform.position, transform.rotation);
             StartCoroutine(DestroyThis());

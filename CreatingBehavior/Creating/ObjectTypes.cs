@@ -15,8 +15,12 @@ public class ObjectTypes : MonoBehaviour
     private VisualObjectList inventory;
     private Animator notification;
     public AudioSource placeSound;
+    private SaveWorld saver;
+    private GameModeManager gameMode;
     void Start()
     {
+        gameMode = GameObject.Find("GameMode").GetComponent<GameModeManager>();
+        saver = GameObject.Find("WorldSavage").GetComponent<SaveWorld>();
         notification = GameObject.Find("#Notefication").GetComponent<Animator>();
         inventory = GameObject.Find("InventoryList").GetComponent<VisualObjectList>();
         canPlaceHere = true;
@@ -35,7 +39,7 @@ public class ObjectTypes : MonoBehaviour
         mousePos.z = 0;
         transform.position = mousePos;
         CreatePosition = new Vector3(MathF.Round(transform.position.x), MathF.Round(transform.position.y), 0);
-        if(Input.GetMouseButton(0) && !Input.GetMouseButton(1))
+        if(Input.GetMouseButton(0) && !Input.GetMouseButton(1) && saver.loaded && !gameMode.playOnly)
         {    
             if (CheckIfCanPlace() && !LimetedItemMax())
             {

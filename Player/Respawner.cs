@@ -16,8 +16,12 @@ public class Respawner : MonoBehaviour
     public bool previous;
     public bool ability;
     public int Coins;
+    private AudioSource PlayMusic;
+    private GameObject editPlayer;
     void Start()
     {
+        editPlayer = GameObject.Find("Player EditMode");
+        PlayMusic = GameObject.Find("MusicGame").GetComponent<AudioSource>();
         previous = true;
         modeManager = GameObject.Find("GameMode").GetComponent<GameModeManager>();
         Player = GameObject.Find("Player");
@@ -29,6 +33,7 @@ public class Respawner : MonoBehaviour
     {
         UIResetAnimator.ResetTrigger("Break");
         StartCoroutine("Reset");
+        PlayMusic.gameObject.SetActive(false);
         if (!checkPoint)
         {
             projectiles.hasAbility = false;
@@ -43,6 +48,13 @@ public class Respawner : MonoBehaviour
         UIResetAnimator.SetTrigger("Break");
         checkPoint = false;
         respawnPoint = Player.transform.position;
+    }
+
+    public void ResetCheckPointOnPlayAgain()
+    {
+        Coins = 0;
+        checkPoint = false;
+        respawnPoint = editPlayer.transform.position; 
     }
 
     IEnumerator Reset()

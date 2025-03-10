@@ -13,10 +13,6 @@ public class FollowPlayer : MonoBehaviour
     public float smoothTime = 0.25f;
     public Vector3 Velocity = Vector3.zero;
     public Transform target;
-    void Start()
-    {
-        player = GameObject.Find("CameraTarget").transform;
-    }
     void Update()
     {
         transform.position = Vector3.SmoothDamp(transform.position, new Vector3(target.position.x, target.position.y, transform.position.z), ref Velocity, smoothTime);

@@ -9,7 +9,9 @@ public class DeleteSoundPlay : MonoBehaviour
     }
     void OnDestroy()
     {
-        if (deleteSound != null)
-        deleteSound.Play();
+        if (deleteSound != null && deleteSound.enabled == true && deleteSound.gameObject.activeSelf)
+        {
+            deleteSound.Play();
+        }
     }
 }

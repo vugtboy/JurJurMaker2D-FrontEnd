@@ -13,6 +13,7 @@ public class BlockAllignement : MonoBehaviour
     public BoxCollider2D col2;
     public bool isMoving;
     public bool pirate;
+    public WorldObject WorldObj;
     void Start()
     {
         Object = GameObject.Find("#Placer#").GetComponent<ObjectTypes>();
@@ -105,6 +106,7 @@ public class BlockAllignement : MonoBehaviour
     {
         if(Input.GetMouseButton(1))
         {
+            WorldObj.Remove();
             Object.placedObjects.Remove(this.gameObject);
             Destroy(this.gameObject);
             Destroy(this);
@@ -113,11 +115,14 @@ public class BlockAllignement : MonoBehaviour
 
     public void Fix()
     {
-        foreach (GameObject checker in checkers)
+        if(!pirate)
         {
-            checker.SetActive(true);
+            foreach (GameObject checker in checkers)
+            {
+                checker.SetActive(true);
+            }
+            col.enabled = true;
+            col2.enabled = true;
         }
-        col.enabled = true;
-        col2.enabled = true;
     }
 }

@@ -19,9 +19,12 @@ public class WeaponTextureFix : MonoBehaviour
     void Update()
     {
         index = Selector.selectedPlayer;
-        foreach(SpriteRenderer spr in sp)
+        foreach (SpriteRenderer spr in sp)
         {
-            spr.sprite = textures[index];
-        }      
+            if (spr != null)
+            {
+                spr.sprite = textures[index];
+            }
+        }
     }
 }

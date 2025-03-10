@@ -7,7 +7,7 @@ public class RemoveAndDestroy : MonoBehaviour
 
     public GameObject Point;
     public GameObject Point2;
-
+    public WorldObject WorldObj;
     void Start()
     {
         Object = GameObject.Find("#Placer#").GetComponent<ObjectTypes>();
@@ -35,7 +35,8 @@ public class RemoveAndDestroy : MonoBehaviour
     void OnMouseOver()
     {
         if (Input.GetMouseButton(1))
-        { 
+        {
+            WorldObj.Remove();
             foreach (GameObject gameObject in objects)
             {
                 Destroy(gameObject);

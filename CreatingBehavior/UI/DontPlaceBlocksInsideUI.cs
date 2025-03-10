@@ -8,14 +8,18 @@ public class DontPlaceBlocksInsideUI : MonoBehaviour, IPointerEnterHandler, IPoi
     public bool shouldTurnOn;
     public bool inside;
     public ObjectTypes placerObj;
+    public bool started;
+    private SaveWorld saver;
     void Start()
     {
+        saver = GameObject.Find("WorldSavage").GetComponent<SaveWorld>();
         placer = GameObject.Find("#Placer#");
         manager = GameObject.Find("GameMode").GetComponent<GameModeManager>();
+        started = true;
     }
     public void Update()
     {
-        if(inside)
+        if(inside && started && saver.loaded)
         {
             placer.SetActive(false);
         }

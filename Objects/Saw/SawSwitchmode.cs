@@ -2,12 +2,26 @@ using UnityEngine;
 
 public class SawSwitchmode : MonoBehaviour
 {
-    public bool horizontal;
+    public int index;
     public Sprite[] textures;
     public SpriteRenderer sp;
     public GameObject Saw;
     public bool selected;
     public float isMoving;
+    public void SetPhase(int index)
+    {
+        this.index = index;
+        if(index == 0)
+        {
+            Saw.transform.eulerAngles = new Vector3(0, 0, 0);
+            sp.sprite = textures[0];
+        }
+        else if(index == 1)
+        {
+            Saw.transform.eulerAngles = new Vector3(0, 0, 90);
+            sp.sprite = textures[1];
+        }
+    }
     void Update()
     {
         if (selected)
@@ -35,16 +49,16 @@ public class SawSwitchmode : MonoBehaviour
 
     void SwitchMode()
     {
-        if (horizontal)
+        if (index == 1)
         {
+            index = 0;
             Saw.transform.eulerAngles = new Vector3(0, 0, 0);
-            horizontal = false;
             sp.sprite = textures[0];
         }
         else
         {
+            index = 1;
             Saw.transform.eulerAngles = new Vector3(0, 0, 90);
-            horizontal = true;
             sp.sprite = textures[1];
         } 
     }

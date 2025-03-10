@@ -1,12 +1,14 @@
 using UnityEngine;
-
+using System.Collections;
 public class PlayerSelectorButtons : MonoBehaviour
 {
     public bool selected;
     public GameObject Buttons;
     public GameModeManager modeManager;
+    private GameObject placer;
     void Start()
     {
+        placer = GameObject.Find("#Placer#");
         Buttons = GameObject.Find("#PlayerSetButtons");
         modeManager = GameObject.Find("GameMode").GetComponent<GameModeManager>();
     }
@@ -26,4 +28,17 @@ public class PlayerSelectorButtons : MonoBehaviour
             }
         }
     }   
+
+    public void TurnOff()
+    {
+        selected = false;
+        StartCoroutine(fixPlacer());
+    }
+
+    IEnumerator fixPlacer()
+    {
+        yield return new WaitForSeconds(0.1f);
+        placer.SetActive(true);
+    }
+
 }

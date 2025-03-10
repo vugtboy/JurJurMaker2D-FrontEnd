@@ -11,8 +11,10 @@ public class PlayerEditMode : MonoBehaviour
     public GameObject EditPlayer;
     public GameObject Point;
     public GameObject Point2;
+    Transform player;
     void Start()
     {
+        player = GameObject.Find("Player").transform;
         sp = GetComponent<SpriteRenderer>();
         mainLayer = sp.sortingOrder;
         placer = GameObject.Find("#Placer#").GetComponent<ObjectTypes>();
@@ -38,13 +40,13 @@ public class PlayerEditMode : MonoBehaviour
 
     void Update()
     {
-        placePosition = new Vector3(MathF.Round(transform.position.x), MathF.Round(transform.position.y) + 0.5f, 0);
+        placePosition = new Vector3(MathF.Round(transform.position.x), MathF.Round(transform.position.y - 0.5f), 0);
         if (selected)
         {
             Vector3 mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
             mousePos.z = 0;
-            transform.position = new Vector3(MathF.Round(mousePos.x), MathF.Round(mousePos.y) +0.49f, mousePos.z);
+            player.transform.position = new Vector3(MathF.Round(mousePos.x), MathF.Round(mousePos.y) + 0.01f, mousePos.z);
         }
 
         foreach (GameObject Object in placer.placedObjects)
@@ -66,7 +68,6 @@ public class PlayerEditMode : MonoBehaviour
 
     void Place()
     {
-        transform.position = placePosition;
-        EditPlayer.transform.position = placePosition;
+        player.transform.position = placePosition;
     }
 }

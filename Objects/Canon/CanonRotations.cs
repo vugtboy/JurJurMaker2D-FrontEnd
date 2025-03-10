@@ -6,6 +6,11 @@ public class CanonRotations : MonoBehaviour
     public Transform defaultRotation;
     public bool selected;
     public float isMoving;
+    public void SetPhase(int phase)
+    {
+        this.phase = phase;
+        transform.eulerAngles = new Vector3(0, 0, - 45 * phase);
+    }
     void Update()
     {
         if (selected)

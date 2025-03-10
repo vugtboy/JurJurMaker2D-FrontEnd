@@ -9,6 +9,7 @@ public class PlayerProjectiles : MonoBehaviour
     public GameObject PowerTrumpet;
     private PlayerAudioManager audioManager;
     private PlayerBehavior playerBehavior;
+    private float waitToShoot;
     void Start()
     {
         playerBehavior = GetComponent<PlayerBehavior>();
@@ -23,7 +24,8 @@ public class PlayerProjectiles : MonoBehaviour
     }
     void Update()
     {
-        if(reShoot <= 0 && Input.GetKeyDown(KeyCode.W) && hasAbility)
+        waitToShoot += Time.deltaTime;
+        if(reShoot <= 0 && Input.GetKeyDown(KeyCode.W) && hasAbility && waitToShoot > 2)
         {
             audioManager.PlayAtackSound(playerBehavior.playerIndex);
             GameObject prefab = Instantiate(Projectile, transform.position, transform.rotation);
@@ -49,6 +51,7 @@ public class PlayerProjectiles : MonoBehaviour
         {
             if (!hasAbility)
             {
+                waitToShoot = 0;
                 PowerTrumpet = Instantiate(powerUp, transform.position, transform.rotation);
                 PowerTrumpet.transform.parent = transform;
             }
