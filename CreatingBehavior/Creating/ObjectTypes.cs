@@ -39,7 +39,7 @@ public class ObjectTypes : MonoBehaviour
         mousePos.z = 0;
         transform.position = mousePos;
         CreatePosition = new Vector3(MathF.Round(transform.position.x), MathF.Round(transform.position.y), 0);
-        if(Input.GetMouseButton(0) && !Input.GetMouseButton(1) && saver.loaded && !gameMode.playOnly)
+        if(Input.GetMouseButton(0) && !Input.GetMouseButton(1) && saver.loaded && !gameMode.playOnly && gameMode.loaded)
         {    
             if (CheckIfCanPlace() && !LimetedItemMax())
             {

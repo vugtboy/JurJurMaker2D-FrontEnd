@@ -10,7 +10,7 @@ public class SpikeBallEdit : MonoBehaviour
     public void SetPhase(int phase)
     {
         this.phase = phase;
-        if (phase < 3)
+        if (phase < 4)
         {
             indicator.transform.eulerAngles = new Vector3(0, 0, transform.rotation.eulerAngles.z + 90 * phase);
             indicator.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);

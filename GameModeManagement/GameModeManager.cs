@@ -29,6 +29,7 @@ public class GameModeManager : MonoBehaviour
     public bool playOnly;
     private TemporaryWorldStorer world;
     private SaveWorld saver;
+    public bool loaded;
     [DllImport("user32.dll")]
     static extern bool SetCursorPos(int X, int Y);
     public void Start()
@@ -53,7 +54,11 @@ public class GameModeManager : MonoBehaviour
         if (world.playModeOnly)
         {
             playOnly = true;
-        }        
+        }
+        else
+        {
+            loaded = true;
+        }
     }
     public void ToPlayModeOnStart()
     {
@@ -75,6 +80,7 @@ public class GameModeManager : MonoBehaviour
         MusicMenu.SetActive(false);
         tomateWarning.SetBool("Note", false);
         dupeWarning.SetBool("Note", false);
+        loaded = true;
     }
 
     public void ToPlayMode()
@@ -156,7 +162,7 @@ public class GameModeManager : MonoBehaviour
 
     IEnumerator PlayModeOnStart()
     {
-        yield return null;
+        yield return new WaitForSeconds(0.2f);
         ToPlayModeOnStart();
     }
 }

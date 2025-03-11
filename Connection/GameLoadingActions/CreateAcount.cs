@@ -79,7 +79,7 @@ public class CreateAcount : MonoBehaviour
       
         foreach (char c in input)
         {
-            if (c != '@' && !char.IsLetterOrDigit(c))
+            if (c != '@' && c !='.' && !char.IsLetterOrDigit(c))
             {
                 return false;
             }
