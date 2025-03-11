@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 public class TunrOffOnEnabled : MonoBehaviour
 {
+    public float time;
     void OnEnable()
     {
         StartCoroutine(TurnOff());
@@ -9,7 +10,7 @@ public class TunrOffOnEnabled : MonoBehaviour
 
     IEnumerator TurnOff()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(time + 1f);
         this.gameObject.SetActive(false);
     }
 }

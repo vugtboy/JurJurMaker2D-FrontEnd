@@ -19,6 +19,7 @@ public class LoginRepository : MonoBehaviour
         request.email = email;
         request.password = password;
         var response = await client.PerformApiCall(testingstringacount + "/register", "Post", JsonUtility.ToJson(request));
+        
         if (response != null)
         {
             return "succes";
@@ -58,7 +59,7 @@ public class LoginRepository : MonoBehaviour
     //na bepaalde tijd token refreshen
     IEnumerator TokenExpire(int expiresIn)
     {
-        yield return new WaitForSeconds(expiresIn - 10f);
+        yield return new WaitForSeconds(expiresIn - 120f);
         Refresh(client.responseDto.refreshToken);
     }
 }

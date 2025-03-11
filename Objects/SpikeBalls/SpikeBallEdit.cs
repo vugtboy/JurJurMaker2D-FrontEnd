@@ -17,7 +17,7 @@ public class SpikeBallEdit : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
             transform.eulerAngles = new Vector3(0, 0, transform.rotation.eulerAngles.z + 90 * phase);
         }
-        else if (phase < 7)
+        else if (phase < 8)
         {
             indicator.transform.eulerAngles = new Vector3(0, 0, transform.rotation.eulerAngles.z + 90 * phase);
             indicator.transform.transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);

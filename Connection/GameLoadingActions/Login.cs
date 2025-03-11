@@ -9,7 +9,7 @@ public class Login : MonoBehaviour
     public TMP_InputField password;
 
     private PostLoginResponseDto responseDto;
-
+    public GameObject failedToLogin;
     void Start()
     {
         client = GameObject.Find("APIManager").GetComponent<LoginRepository>();
@@ -23,6 +23,10 @@ public class Login : MonoBehaviour
         if(result == "succes")
         {
             SceneManager.LoadScene("Worldview");
+        }
+        else
+        {
+            failedToLogin.SetActive(true);
         }
     }
 

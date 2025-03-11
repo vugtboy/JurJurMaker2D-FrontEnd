@@ -87,7 +87,6 @@ public class SaveWorld : MonoBehaviour
             {
                 PostObjectRequestDto request = new PostObjectRequestDto();
                 obj.ObjectId = Guid.NewGuid().ToString();
-                Debug.Log("MadeNew:" + obj.ObjectId);
                 request.objectId = obj.ObjectId;
                 request.prefabID = obj.PrefabID;
                 request.positionX = obj.PositionX;
@@ -103,7 +102,6 @@ public class SaveWorld : MonoBehaviour
         {
             if (!objectsInScene.Contains(obj))
             {
-                Debug.Log(obj.ObjectId);
                 client.DeleteObject(obj.ObjectId);
                 delete.Add(obj);
             }

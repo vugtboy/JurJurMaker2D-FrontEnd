@@ -62,8 +62,6 @@ public class GameModeManager : MonoBehaviour
         PlayCamera.SetActive(true);
         respawner.respawnPoint = Player.transform.position;
         Play = true;
-        //sorry voor deze, ik zag geen andere weg omdat tomaten moeten bestaan, eerst deed ik deze acties met de button zelf, maar ik wil
-        //een waarschuwing geven als je op play drukt en dat kan alleen zo |=.
         placer.SetActive(false);
         menu.SetActive(false);
         editButton.SetActive(true);
@@ -132,7 +130,7 @@ public class GameModeManager : MonoBehaviour
     {
         if(playOnly && saver.loaded)
         {
-            ToPlayModeOnStart();
+            StartCoroutine(PlayModeOnStart());
             playOnly = false;
         }
         if(!Play)
@@ -156,5 +154,9 @@ public class GameModeManager : MonoBehaviour
         return false;
     }
 
-
+    IEnumerator PlayModeOnStart()
+    {
+        yield return null;
+        ToPlayModeOnStart();
+    }
 }
