@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class SetEditButtons : MonoBehaviour
 {
     public GameObject editMode1;
@@ -11,7 +11,7 @@ public class SetEditButtons : MonoBehaviour
         {
             editMode1.SetActive(false);
             Destroy(editMode2);
-            exit.SetActive(true);
+            StartCoroutine(DontBreakTheExit());
         }
         else
         {
@@ -19,4 +19,9 @@ public class SetEditButtons : MonoBehaviour
         }
     }
 
+    IEnumerator DontBreakTheExit()
+    {
+        yield return new WaitForSeconds(3f);
+        exit.SetActive(true);
+    }
 }
