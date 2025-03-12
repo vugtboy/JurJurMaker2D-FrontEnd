@@ -327,7 +327,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         return Physics2D.OverlapBox(BadLayerCheckPosition.position, BadLayerCheckSize, 0.2f, Bad);
     }
-
+    //doodgaan
     public void Die()
     {
         audioManage.PlayDeathSound();

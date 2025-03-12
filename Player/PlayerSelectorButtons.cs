@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 public class PlayerSelectorButtons : MonoBehaviour
 {
+    //als je op rechtermuisknop drukt op de speler moeten de selectieknoppen verschijnen om te kunnen kiezen uit spelers
     public bool selected;
     public GameObject Buttons;
     public GameModeManager modeManager;

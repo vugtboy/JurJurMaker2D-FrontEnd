@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 public class PirateTalk : MonoBehaviour
 {
+    //de piraten random laten praten en laten kiezen tussen 3 audioclips
     public AudioSource aud;
     public AudioClip[] ac;
     private float seconds;

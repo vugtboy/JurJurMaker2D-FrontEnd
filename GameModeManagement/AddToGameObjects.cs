@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class AddToGameObjects : MonoBehaviour
 {
+    //voor wapens en kanonskogels, die kapot moeten als we niet in play zitten
     private GameModeManager modeManager;
     void Start()
     {

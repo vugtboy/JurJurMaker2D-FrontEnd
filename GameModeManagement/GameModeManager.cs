@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections;
 public class GameModeManager : MonoBehaviour
 {
+    //de ergeste, deze klasse switcht tussen play en editmode en zet de juist uit elementen aan of uit.
     public bool Play;
     public GameObject placer;
     public Respawner respawner;
@@ -51,6 +52,7 @@ public class GameModeManager : MonoBehaviour
         dupeWarning = GameObject.Find("#Notefication").GetComponent<Animator>();
         tomateWarning = GameObject.Find("#Notefication Tomate").GetComponent<Animator>();
         world = GameObject.Find("#WorldTaker").GetComponent<TemporaryWorldStorer>();
+        //als we playmode only spelen dan moeten we direct naar playmode gaan, maar eerst in editmode zijn zodat de objecten goed geplaatst worden
         if (world.playModeOnly)
         {
             playOnly = true;
@@ -60,6 +62,7 @@ public class GameModeManager : MonoBehaviour
             loaded = true;
         }
     }
+    //rond start naar playmode gaan
     public void ToPlayModeOnStart()
     {
         counter.Counter = respawner.Coins;
@@ -82,7 +85,7 @@ public class GameModeManager : MonoBehaviour
         dupeWarning.SetBool("Note", false);
         loaded = true;
     }
-
+    //gewoon naar playmode gaan
     public void ToPlayMode()
     {
         if(HasTomate())
@@ -108,12 +111,13 @@ public class GameModeManager : MonoBehaviour
             tomateWarning.SetBool("Note", false);
             dupeWarning.SetBool("Note", false);
         }
+        // er moet wel een finish zijn voordat je via deze methode op playmode gaat
         else
         {
             tomateWarning.SetBool("Note", true);
         }
     }
-
+    //naar edit mode gaan
     public void ToEdit()
     { 
         PlayCamera.SetActive(false);
@@ -123,7 +127,7 @@ public class GameModeManager : MonoBehaviour
         Play = false;
         StartCoroutine(ToEditMode());
     }
-
+    //dingen die later moeten gebeuren om naar playmode te gaan
     IEnumerator ToEditMode()
     {
         yield return new WaitForSeconds(0.1f);
@@ -131,7 +135,7 @@ public class GameModeManager : MonoBehaviour
         menu.SetActive(true);
         editButton.SetActive(false);
     }
-
+    //niet in start maar een frame later en als we geload zijn naar playmode gaan
     void Update()
     {
         if(playOnly && saver.loaded)

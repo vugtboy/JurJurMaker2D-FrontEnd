@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class OutOfWorld : MonoBehaviour
 {
+    //object verwijderen als het zicgh buiten de wereld bevindt
     public MapSize mapSize;
     public ObjectTypes Objects;
     void Start()

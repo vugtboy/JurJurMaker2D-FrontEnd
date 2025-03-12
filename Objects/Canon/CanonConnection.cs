@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CanonConnection : MonoBehaviour
 { 
+    //rotatie aanpassen als een point van het konan een grondobject detecteerd
     public void UpdateConnection(int checkerNumber)
     {
         switch (checkerNumber)

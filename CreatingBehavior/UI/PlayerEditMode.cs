@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 public class PlayerEditMode : MonoBehaviour
 {
+    //code van het speler editmode object
     public ObjectTypes placer;
     public bool selected;
     public Vector3 placePosition;
@@ -40,6 +41,7 @@ public class PlayerEditMode : MonoBehaviour
 
     void Update()
     {
+        //de speler naar de afgeronde muispositie brengen
         placePosition = new Vector3(MathF.Round(transform.position.x), MathF.Round(transform.position.y - 0.5f), 0);
         if (selected)
         {
@@ -48,7 +50,7 @@ public class PlayerEditMode : MonoBehaviour
             mousePos.z = 0;
             player.transform.position = new Vector3(MathF.Round(mousePos.x), MathF.Round(mousePos.y) + 0.01f, mousePos.z);
         }
-
+        //objecten in de speler verwijderen als de speler ob de jusite plek staat(tijden het verplaatsen is de speler .01 blok lager dan normaal)
         foreach (GameObject Object in placer.placedObjects)
         {
             if (Object.transform.position == Point.transform.position && Object.name != "point" && Object.name != "point2")
@@ -65,7 +67,7 @@ public class PlayerEditMode : MonoBehaviour
             }
         }
     }
-
+    //speler neerzetten als deze losgelaten is
     void Place()
     {
         player.transform.position = placePosition;

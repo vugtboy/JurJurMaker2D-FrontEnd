@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BoxFinder : MonoBehaviour
 {
+    //als de speler voor een doos staat dan deze doos hier tijdelijk opslaan
     public PickableObject box;
     void OnTriggerEnter2D(Collider2D col)
     {

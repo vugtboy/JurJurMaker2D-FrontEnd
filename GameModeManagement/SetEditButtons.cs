@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 public class SetEditButtons : MonoBehaviour
 {
+    //de buttons om naar editmode te gaan aan of uit zetten als we in playmodeonly zitten, zodat je niet alsnog naar edit kan gaan
     public GameObject editMode1;
     public GameObject editMode2;
     public GameObject exit;

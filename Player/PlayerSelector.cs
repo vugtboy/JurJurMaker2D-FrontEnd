@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerSelector : MonoBehaviour
 {
+    //kiezen uit spelers, als de speler gekozen is alle waarden die aangepast moeten worden zodat alles wat bij de speler hoor, wapens animatie editplayer playplayer
+    //de juiste texture krijgt
     public int selectedPlayer;
     public Sprite[] weapons;
     public Sprite[] theBoys;

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
+//zodat lists opgehaald kunne worden met de API
 public static class JsonHelper
 {
     public static List<T> ParseJsonArray<T>(string jsonArray)

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DestroyPirateParent : MonoBehaviour
 {
+    //de pirate wordt verwijderd vanuit de parent, dus de points moeten ook verwijderd worden als je de praten verwijderd
     public ObjectTypes Object;
     public GameObject[] objects;
 

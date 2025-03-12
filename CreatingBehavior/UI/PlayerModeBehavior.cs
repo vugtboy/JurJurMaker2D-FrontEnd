@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerModeBehavior : MonoBehaviour
 {
+    //de speler is heel ingewikkeld en moet daardoor tussen veel meer wisselen als je switchst tussen play en edit deze klasse ga ik echt niet helemaal uitleggen
     public GameModeManager ModeManager;
 
     public GameObject EditObject;

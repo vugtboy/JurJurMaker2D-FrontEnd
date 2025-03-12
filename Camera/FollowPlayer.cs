@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
+    //de camera de speler laten volgen in playmode
     public Transform player;
     public float speed;
     public int Length;
@@ -15,10 +16,12 @@ public class FollowPlayer : MonoBehaviour
     public Transform target;
     void Update()
     {
+        // we willen dat het smoot verloopt en niet dat de camera op de speler gelockt is
         transform.position = Vector3.SmoothDamp(transform.position, new Vector3(target.position.x, target.position.y, transform.position.z), ref Velocity, smoothTime);
 
         Length = mapSize.maxLength;
         Heigth = mapSize.maxHeigth;
+        //camera binnen de mapgroote houden
         if (transform.position.x < offsetLength)
         {
             transform.position = new Vector3(offsetLength, transform.position.y, -10);

@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 using System.Collections;
 public class ApiClient : MonoBehaviour
 {
+    //de client om calls te doen naar de API
     public static ApiClient instance { get; private set; }
     private string baseUrl;
     private string baseUrlAuth;

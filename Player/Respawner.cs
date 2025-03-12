@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 public class Respawner : MonoBehaviour
 {
+    // respawnen op de juiste plek op de juiste tijd, moeilijk uit te leggen en ik ben het comenten zat, maar het werkt en daar gaat het om
     public Vector3 respawnPoint;
     public GameObject Player;
     public GameObject PlayerObject;

@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 public class PirateMovement : MonoBehaviour
 {
+    //special script omdat een piraat in buildmode anders is dan in playmode bijna hetzelfde als BlockMovement
     public ObjectTypes placer;
     public float moveTimer;
     public bool selected;

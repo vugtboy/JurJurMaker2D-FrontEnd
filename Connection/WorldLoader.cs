@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 public class WorldLoader : MonoBehaviour
 {
+    //deze klasse gaat over alels wat met het laden en opslaan van werelden te maken heeft in het menu
     private WorldRepository client;
     public GameObject world;
     private Transform worldPlacement;
@@ -28,7 +29,7 @@ public class WorldLoader : MonoBehaviour
     {
         return await client.GetUserId();
     }
-
+    //alle werelden worden opgehaald en objecten die info tonen worden aangemaakt in de lijst
     async void GetWorlds()
     {
         worlds = await client.GetAllWorlds(await GetUserId());
@@ -51,7 +52,7 @@ public class WorldLoader : MonoBehaviour
             }
         }
     }
-
+    //er wordt een nieuwe wereld aangemaakt, maar als de naam al bestaat of er al 5 werelden zijn mag dat niet
     public async void TryToCreateNewWorld(string WorldName, int Heigth, int Length)
     {
         if(!SimalarWorldName(WorldName) && worlds.Count < 5)
@@ -68,7 +69,7 @@ public class WorldLoader : MonoBehaviour
             worldStorer.OpenWorld(worldId.ToString(), world, false);            
         }
     }
-
+    //een wereld verwijderen per wereld id
     public void DeleteWorld(string id)
     {
         client.DeleteWorld(id);
@@ -81,7 +82,7 @@ public class WorldLoader : MonoBehaviour
             }
         }
     }
-
+    //kijken of er al wereldnamen zijn die overeenkomen met de ingevoerde naam
     public bool SimalarWorldName(string input)
     {
         foreach(string worldName in worldNames)

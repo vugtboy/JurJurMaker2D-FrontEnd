@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RotationGameModeFix : MonoBehaviour
 {
+    //kanonen kunnen roteren, in editmode kun je dit aanpassen, maar als je dan naar playmode gaat moet je die rotatie overzetten, dit gebeurt hier
     public GameModeManager ModeManager;
 
     public GameObject EditObject;

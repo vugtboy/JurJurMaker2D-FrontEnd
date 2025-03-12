@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SawSwitchmode : MonoBehaviour
 {
+    //de index van de zaag aanpassen als er op geklikt word, hij kan wisselen tussen naar rechts en links, en naar boven en onder
     public int index;
     public Sprite[] textures;
     public SpriteRenderer sp;

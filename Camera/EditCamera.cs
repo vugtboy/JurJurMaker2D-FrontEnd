@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EditCamera : MonoBehaviour
 {
+    //de camera binnen de wereldgrote houden, maar wel bestuurbaar maken met de pijltjes
     public int Length;
     public int Heigth;
     public float offsetHeigth;
@@ -15,6 +16,7 @@ public class EditCamera : MonoBehaviour
     {
         Length = mapSize.maxLength;
         Heigth = mapSize.maxHeigth;
+        //checken of we niet buiten de map gaan
         if(transform.position.x < offsetLength)
         {
             transform.position = new Vector3(offsetLength, transform.position.y, -10);
@@ -38,7 +40,7 @@ public class EditCamera : MonoBehaviour
 
         float ofsetx = activeSpeedx * Time.deltaTime;
         float ofsety = activeSpeedy * Time.deltaTime;
-
+        //de snelheid gaat trouwens ook steeds sneller de langer je drukt, tegen verveling
         if (Input.GetKey(KeyCode.UpArrow))
         {
             transform.position = new Vector3(transform.position.x, transform.position.y + ofsety, -10);

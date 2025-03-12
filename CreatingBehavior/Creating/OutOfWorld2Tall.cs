@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class OutOfWorld2Tall : MonoBehaviour
 {
+    //als een deel van een tweehoog object zich buiten de wereld bevint het hele object verwijderen (omdat die bestaat uit 2 points die het moeten checken)s
     public MapSize mapSize;
     public ObjectTypes Objects;
     public GameObject point1;

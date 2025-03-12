@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CheckForSameBlocks : MonoBehaviour
 {
+    //een script wat checkt of er blokken van hetzelfde type als de parrent op hun positie zijn, zoja dan moet de parent zijn texture aanpassen
     public BlockAllignement parrent;
     public int position;
     

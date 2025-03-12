@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class UnNote : MonoBehaviour
 {
+    //notificatie op animatieframe de wegga animatie laten spelen
     private Animator anim;
     void Start()
     {

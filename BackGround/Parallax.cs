@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 public class Parallax : MonoBehaviour
 {
+    //voor paralax in de achtergrond omdat ik geen 3d camera gebruik, want die doet vreemd met de cursor van de muis positie bepalen
     private Vector2 startPos;
     private float length;
     public Camera[] cams;
@@ -24,7 +25,7 @@ public class Parallax : MonoBehaviour
         startPos = transform.position;
         length = spriteBounds.size.x;
     }
-
+    //de achtergrond laten meebewegen met de camera dus om het effect te geven dat deze verder weg is
     void Update()
     {
         int current = 0;

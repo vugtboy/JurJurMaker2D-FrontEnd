@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DestroyBlocksWhenEntered : MonoBehaviour
 {
+    //checkpoints en spelers mogen niet gedelete worden doordat blokken erin geplaatst worden, daarom deleten we het blok eerst
     private ObjectTypes Object;
     void Start()
     {

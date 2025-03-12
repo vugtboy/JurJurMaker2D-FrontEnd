@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ObjectModeBehavior : MonoBehaviour
 {
+    //wisselen tussen playmode object en edit object, omdat bijde heel anders zijn, kannon schieten en spikeballs draaien in play, in edit wil je ze aan kunnen passen
+    //hierdoor heb ik ze een verschillend object gegeven, wat het makkelijk maakt om ertussen te wisselen
     public GameModeManager ModeManager;
 
     public GameObject EditObject;

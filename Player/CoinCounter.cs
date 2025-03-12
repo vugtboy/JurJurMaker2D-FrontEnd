@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 public class CoinCounter : MonoBehaviour
 {
+    //gewoon coins tellen als je ze aanraakt als speler en de coin uitzetten zodat je er maar 1 kan pakken
     public int Counter;
     public GameObject CoinCollect;
     private TMP_Text Coins;

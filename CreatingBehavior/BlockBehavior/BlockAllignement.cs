@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BlockAllignement : MonoBehaviour
 {
+    //deze klasse is een wat oudere(een van de eerste) en is rommelig, naarmate ik verder kwam in het project ben ik responsibility beter gaan leren verdelen
     public bool selected;
     public ObjectTypes Object;
     public string type;
@@ -32,7 +33,7 @@ public class BlockAllignement : MonoBehaviour
             texture.sprite = textures[0];
         }
     }
-
+    //kijken of er ergens om ons heen een block is en zoja de texture instellen op de juiste, zodat de blokken verbinden
     public void UpdateTexture()
     {
         if(!isMoving)
@@ -102,6 +103,7 @@ public class BlockAllignement : MonoBehaviour
         selected = false;
     }
 
+    //block verwijderen als je erop klickt met rechtermuisknop
     void OnMouseOver()
     {
         if(Input.GetMouseButton(1))
@@ -112,7 +114,7 @@ public class BlockAllignement : MonoBehaviour
             Destroy(this);
         }
     }
-
+    //als het block geplaats is nadat het verplaats is in een andere klasse de texture fixen, zodat hij wederom hier aan de blokken gaat vastzitten ipv een los block vormt
     public void Fix()
     {
         if(!pirate)
@@ -125,4 +127,5 @@ public class BlockAllignement : MonoBehaviour
             col2.enabled = true;
         }
     }
+    //zoals ik al zei rommelig, dit had opgelost kunnen worden door van te voren beter te bedenken hoe dit had moeten werken maarja zoveel tijd had ik niet
 }

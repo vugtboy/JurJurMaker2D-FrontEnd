@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayAtackYellPerPlayer : MonoBehaviour
 {
+    //de speler laten roepen als hij een wapen heeft bemachtigd, dit is voor elke speler een ander geluid
     public AudioClip[] clips;
     private int player;
     private PlayerSelector playerSelector;

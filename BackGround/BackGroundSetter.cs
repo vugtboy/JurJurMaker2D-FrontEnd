@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BackGroundSetter : MonoBehaviour
 {
+    //een achtergrond instellen afhankelijk van de gekozen achtergrond
     public GameObject[] BackGrounds;
     private TemporaryWorldStorer world;
     void Start()

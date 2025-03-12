@@ -6,6 +6,7 @@ using System.Collections;
 using System;
 public class WorldRepository : MonoBehaviour
 {
+    //deze klasse gaat over alles wat met de wereld opslaan te maken heeft
     private string testingUrl = "https://avansict2226884.azurewebsites.net";
     private ApiClient client;
     
@@ -39,7 +40,7 @@ public class WorldRepository : MonoBehaviour
             return new List<GetWorldResponseDto>();
         }
     }
-
+    //een nieuwe wereld aanmaken afhankelijk van de ingevoerde info en defaults instellen die niet vanuit het menu kunnen
     public async void CreateNewWorld(string Name, int Heigth, int Length, string userId, Guid id)
     {
         CreateWorldRequestDto request = new CreateWorldRequestDto();
@@ -53,12 +54,12 @@ public class WorldRepository : MonoBehaviour
         request.background = 0;
         var response = await client.PerformApiCall(testingUrl + "/Environment2D", "Post", JsonUtility.ToJson(request), client.responseDto.accessToken);
     }
-
+    //wereld per id verwijderen
     public async void DeleteWorld(string id)
     {
         await client.PerformApiCall(testingUrl + "/Environment2D?id=" + id, "Delete", null, client.responseDto.accessToken);
     }
-
+    //wereld wijzigingen opslaan(wat dus kan in mijn game)
     public async void SaveWorld(PutWorldRequestDto request)
     {
         var response = await client.PerformApiCall(testingUrl + "/Environment2D", "Put", JsonUtility.ToJson(request), client.responseDto.accessToken);

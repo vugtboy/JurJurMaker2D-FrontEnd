@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayAudioPerPlayer : MonoBehaviour
 {
+    //een audioclip spelen als de speler tegen dit object aanloopt, afhankelijk van welke speler er is geselecteerd
     private AudioSource audios;
     public AudioClip[] clips;
     private int player;

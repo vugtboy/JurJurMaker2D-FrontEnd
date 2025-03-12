@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 public class ObjectTypes : MonoBehaviour
 {
+    // dit is de klasse met eigenlijk een verkeerde naam, maar het was te laat om deze nog te wijzigen(ook oude klasse) deze gaat over het plaatsen van objecten in de game
     public GameObject[] allObjects;
     public int selected;
     public bool canPlaceHere;
@@ -39,8 +40,10 @@ public class ObjectTypes : MonoBehaviour
         mousePos.z = 0;
         transform.position = mousePos;
         CreatePosition = new Vector3(MathF.Round(transform.position.x), MathF.Round(transform.position.y), 0);
+        //plaatsen dat kan volgens de game, game moet ingeladen zijn, en het moet een edit game zijn
         if(Input.GetMouseButton(0) && !Input.GetMouseButton(1) && saver.loaded && !gameMode.playOnly && gameMode.loaded)
         {    
+            //als we hier kunnen plaatsen en als er van het geplaatse object niet al te veel zijn nieuw object aanmaken en plaatsen
             if (CheckIfCanPlace() && !LimetedItemMax())
             {
                 placeSound.Play();
@@ -48,10 +51,12 @@ public class ObjectTypes : MonoBehaviour
                 placedObjects.Add(obj);
             }            
         }
+        //als je een object plaatst waarvan er teveel zijn dan een noteficatie krijgen
         if (Input.GetMouseButtonDown(0) && LimetedItemMax() && CheckIfCanPlace())
         {
             notification.SetBool("Note", true);
         }
+        //wisselen tussen geselecteerde object door te scrollen
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll < 0)
         {
@@ -77,7 +82,7 @@ public class ObjectTypes : MonoBehaviour
         }
         selectedBlockTexture.sprite = inventory.Objects[selected].GetComponent<Image>().sprite;
     }
-
+    //kijken naar van alles of het object geplaats mag worden, niet al bezet of al aan het plaatsen, en van een ander blok type
     bool CheckIfCanPlace()
     {
         foreach (GameObject Object in placedObjects)
@@ -111,6 +116,7 @@ public class ObjectTypes : MonoBehaviour
         return true;
     }
 
+    //kijken of er niet al te veel van zijn in de game
     bool LimetedItemMax()
     {
         foreach (GameObject Object in placedObjects)

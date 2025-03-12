@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SpikeBallEdit : MonoBehaviour
 {
+    //index van spikeball aanpassen als er op geklikt wordt(wisselen tussen 8 fases, waar hij begint en welke kant hij opdraait)
     public int phase;
     public GameObject indicator;
     public float isMoving;

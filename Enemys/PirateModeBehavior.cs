@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PirateModeBehavior : MonoBehaviour
 {
+    //piraten alle waarden over laten geven aan het playobject als we van edit naar play gaan
     public GameModeManager ModeManager;
 
     public GameObject EditObject;

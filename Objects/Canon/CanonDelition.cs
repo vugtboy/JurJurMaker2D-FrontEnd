@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CanonDelition : MonoBehaviour
 {
+    //niet allen editkanon deleten maar juist de parent(voor alle blokken die switchen tussen modes is later gebleken)
     public ObjectTypes Objects;
     public GameObject Object;
     public WorldObject WorldObj;

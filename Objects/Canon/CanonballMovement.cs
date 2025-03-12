@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 public class CanonballMovement : MonoBehaviour
 {
+    //kanonskogel de juiste kant op laten gaan als hij inspawnt en slopen als het een speler of wapen raakt, of de grond of een doos
     public Rigidbody2D rb;
     public float speed;
 

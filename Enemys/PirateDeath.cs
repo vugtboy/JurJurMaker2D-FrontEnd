@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PirateDeath : MonoBehaviour
 {
+    //voor een piraat dood te laten gaan en geluid af te spelen als een piraat dood gaat
     public GameObject pirateBody;
     public GameObject pirateBodyLeft;
     public GameObject deadme;

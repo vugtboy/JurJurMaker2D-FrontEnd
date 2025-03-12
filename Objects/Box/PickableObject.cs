@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PickableObject : MonoBehaviour
 {
+    // voor dozen die je op kunt tillen
     public bool holded;
     public Transform holdpoint;
     public float trowSpeed;

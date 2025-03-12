@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System;
 public class MapSizeEditReader : MonoBehaviour
 {
+    //de mapgroote aanpassen via de ui en op de mapsize script opslaan als je de groote instelt met de knop, en een waarschuwing geven als de map kleiner wordt, zodat je niet perongeluk objecten verwijdert
     public Scrollbar heigthEditor;
     public Scrollbar lengthEditor;
 
@@ -18,10 +19,6 @@ public class MapSizeEditReader : MonoBehaviour
 
     public GameObject menu;
     public GameObject button;
-    void Start()
-    {
-        
-    }
 
     void OnEnable()
     {

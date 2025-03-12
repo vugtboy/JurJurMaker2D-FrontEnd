@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+//deze klasse is voledig onnodig en kan net zo goed weg, maar ik ben bang dat deze toch ergens nodig is, sorry voor deze, zal nooit meer gebeuren
 public static class SplitJsonArray
 {
     

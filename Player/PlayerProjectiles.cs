@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerProjectiles : MonoBehaviour
 {
+    //gaat over het inspawnen van een wapen als we een wapen hebben en deze willen gooien, dit mag maar 1 keer per zoveel tijd
     public GameObject Projectile;
     public bool hasAbility;
     public float reShoot;

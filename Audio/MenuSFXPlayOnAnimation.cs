@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MenuSFXPlayOnAnimation : MonoBehaviour
 {
+    //om geluiden af te spelen via animatie keys
     public AudioSource Aud1;
     public AudioSource Aud2;
     public AudioSource Aud3;

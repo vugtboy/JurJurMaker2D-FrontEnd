@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayAgainOrGoToMenu : MonoBehaviour
 {
+    //de knoppen om opnieuw te spelen of te editen als je klaar bent met spelen
     public Respawner respawner;
     void Start()
     {

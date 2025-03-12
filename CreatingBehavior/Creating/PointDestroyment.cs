@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PointDestroyment : MonoBehaviour
 {
+    //een object verwijderen uit de placedobjectlist, als je een object verwijdert van 2 hoog
     public ObjectTypes placed;
 
     void Start()
@@ -11,7 +12,6 @@ public class PointDestroyment : MonoBehaviour
 
     void OnDestroy()
     {
-        Debug.Log("Destroy");
         placed.placedObjects.Remove(this.gameObject);
         Destroy(transform.parent);
     }

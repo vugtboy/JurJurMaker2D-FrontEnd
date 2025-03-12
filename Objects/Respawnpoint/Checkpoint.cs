@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
+    //als speler in checkpoint gaat onthouden of speler ability(wapen heeft) en de positie van checkpoint respawnpoint maken net als aantal coins opslaan
     public Respawner respawner;
     void Start()
     {

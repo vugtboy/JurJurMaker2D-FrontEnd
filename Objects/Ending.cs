@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 public class Ending : MonoBehaviour
 {
+    //als je tomaten aanraaktde UI fixen en de muziek stoppen zodat je opnieuw kunt spelen
     private Animator anim;
     public AudioClip[] clips;
     private int player;

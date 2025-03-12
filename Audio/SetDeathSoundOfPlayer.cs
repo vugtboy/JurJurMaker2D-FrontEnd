@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SetDeathSoundOfPlayer : MonoBehaviour
 {
+    //objecten een audioclip laten instellen als de speler doodgaat, dit zodat het per object een ander geluid is bv een spike = auch, de void = whaa!
     private AudioSource deathAudios;
     public AudioClip[] deathclip;
     private int player;

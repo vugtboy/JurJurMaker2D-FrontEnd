@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DeleteSoundPlay : MonoBehaviour
 {
+    //een geluid spelen waneer een object gedelete word
     public AudioSource deleteSound;
     void Start()
     {

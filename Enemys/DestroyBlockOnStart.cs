@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DestroyBlockOnStart : MonoBehaviour
 {
+    //als tweehoge blokken geplaatst worden wordt gekeken of het in het blok boven het geplaatste blok(want 2 hoog) een blok is (zoja, delete!)
     private ObjectTypes Object;
 
     void Start()

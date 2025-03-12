@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 public class BlockMovement : MonoBehaviour
 {
+    //klase voor blokken te laten bewegen
     public ObjectTypes placer;
     public float moveTimer;
     public bool selected;
@@ -19,6 +20,7 @@ public class BlockMovement : MonoBehaviour
         myBlockAllignement = GetComponent<BlockAllignement>();
         placer = GameObject.Find("#Placer#").GetComponent<ObjectTypes>();
     }
+    //het object optillen
     void OnMouseDown()
     {
         placer.gameObject.SetActive(false);
@@ -32,7 +34,7 @@ public class BlockMovement : MonoBehaviour
         placer.isMovingBlock = true;
         selected = true;
     }
-
+    //het object loslaten
     void OnMouseUp()
     {
         anim.SetBool("Lift", false);
@@ -50,7 +52,7 @@ public class BlockMovement : MonoBehaviour
         }
         selected = false;
     }
-
+    //het object meebewegen met de cursor en de positie bepalen waar hij heenmoet als hij losgelaten word
     void Update()
     {
         placePosition = new Vector3(MathF.Round(transform.position.x), MathF.Round(transform.position.y), 0);
@@ -70,7 +72,7 @@ public class BlockMovement : MonoBehaviour
             transform.position = mousePos;
         }
     }
-
+    //het blok plaatsen, en blokken die er al staan op die plek verwijderen
     void Place()
     {
         foreach (GameObject Object in placer.placedObjects)

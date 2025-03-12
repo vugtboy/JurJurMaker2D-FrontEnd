@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 using System.Collections;
 
+//repository om mee in te loggen
 public class LoginRepository : MonoBehaviour
 {
     private string testingstringacount = "https://avansict2226884.azurewebsites.net/account";
@@ -56,7 +57,7 @@ public class LoginRepository : MonoBehaviour
         StartCoroutine(TokenExpire(client.responseDto.expiresIn));
     }
 
-    //na bepaalde tijd token refreshen
+    //na bepaalde refreshtijd refreshen
     IEnumerator TokenExpire(int expiresIn)
     {
         yield return new WaitForSeconds(expiresIn - 120f);

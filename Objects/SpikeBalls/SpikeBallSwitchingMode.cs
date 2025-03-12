@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SpikeBallSwitchingMode : MonoBehaviour
 {
+    //de schaal(voor welke kant op hij draait) en rotatie van spikebal meegeven aan het playobject
     public GameModeManager ModeManager;
 
     public GameObject EditObject;

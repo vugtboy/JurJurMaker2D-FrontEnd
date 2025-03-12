@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FlameTrowerEditModeBehavior : MonoBehaviour
 {
+    //flametrwoer in editmode kan draaien en aan of uitgezet worden, dat gebeurt hier
     public bool flame;
     public SpriteRenderer indicator;
     public Sprite[] textures;

@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 
 public class DontPlaceBlocksInsideUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    //de placer uitzetten als deze zich in het ui bevint, zodat je niet een blok kan plaatsen waneer je op een knop wil drukken
     public GameObject placer;
     public GameModeManager manager;
     public bool shouldTurnOn;

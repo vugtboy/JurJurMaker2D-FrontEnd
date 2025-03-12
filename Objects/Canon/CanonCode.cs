@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 public class CanonCode : MonoBehaviour
 {
+    //op animatiekey een kanonskogel inspawnen
     public GameObject CanonBowl;
     public Transform CanonBowlSpawnpoint;
 

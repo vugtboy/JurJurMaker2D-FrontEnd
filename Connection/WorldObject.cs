@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 public class WorldObject : MonoBehaviour
 {
+    //dit is een object binnen de wereld met de waarden
     public string ObjectId;
     public string Id;
     public int PrefabID;
@@ -16,6 +17,8 @@ public class WorldObject : MonoBehaviour
     private SawSwitchmode saw;
     private SaveWorld saver;
     private ObjectTypes placer;
+    //het object word toegevoegd aan de objectsinscene van de worldsaver, voor sommige uitzonderingen word een script opgehaald waarin het object gewijzigd word,
+    //om de index in te stellen, zoals de kant waarop een spikeball draait in combinatie met zijn rotatie
     void Start()
     {
         saver = GameObject.Find("WorldSavage").GetComponent<SaveWorld>();
@@ -41,7 +44,7 @@ public class WorldObject : MonoBehaviour
             transform.position = new Vector3(PositionX, PositionY, 0);
         }
     }
-
+    //de waarden worden ingesteld volgens de juiste indexes, ook word de het object, tenzij checkpoint speler of finsh(uitzonderingen wegens 2 hoog) toegevoegd aan de geplaatste object volgens de placer
     public void SetValues()
     {
         placer = GameObject.Find("#Placer#").GetComponent<ObjectTypes>();
@@ -74,13 +77,14 @@ public class WorldObject : MonoBehaviour
             transform.position = new Vector3(PositionX, PositionY, 0);
         }
     }
-
+    //als het object gedelete word het object verwijderen uit de in scene objecten van de objectsaver
     public void Remove()
     {
         if(saver.objectsInScene.Contains(this))
         saver.objectsInScene.Remove(this);
 
     }
+    //de waarden van dit object bijhouden voor als het opgeslagen moet worden
     void Update()
     {
         PositionX = Convert.ToInt32(transform.position.x);

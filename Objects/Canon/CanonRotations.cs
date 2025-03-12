@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CanonRotations : MonoBehaviour
 {
+    //niet allen het hele kanon maar ook de loop zelf kan gedraaid worden, het kanon zelf conect automatisch aan een muur, de loop kun je aanpassen,
+    //die draait sws mee met het hele canon, maar daarnaast verder heen of terug afhankelijk van de stand van index
     public int phase;
     public Transform defaultRotation;
     public bool selected;

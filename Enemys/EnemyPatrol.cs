@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
+    //klasse die gaat over het lopen van de piraat
     public Rigidbody2D rb;
     public int direction;
     public float speed;
@@ -15,10 +16,12 @@ public class EnemyPatrol : MonoBehaviour
 
     void Update()
     {
+        //om te mogen lopen moeten we niet vallen, maar als we een afgrond voor ons detecteren moeten we omdraaien aircheck checkt of we nog wel op de grond staan, terwijl groundcheck checkt of er voor ons een afgrond is
         if (AirCheck() || GroundCheck())
         {
             rb.linearVelocity = new Vector2(speed * direction, rb.linearVelocity.y);
         }
+        //als we op de grond zijn moeten we niet vallen en omkeren als we tegen een ding aanlopen of er voor ons iets is
         if (AirCheck())
         {
             anim.SetBool("Falling", false);
@@ -27,12 +30,13 @@ public class EnemyPatrol : MonoBehaviour
                 SwitchDirection();
             }
         }
+        //als we in de lucht zijn vallen we
         else
         {
             anim.SetBool("Falling", true);
         }
     }
-
+    //van richting veranderen
     void SwitchDirection()
     {
         if (direction == -1)

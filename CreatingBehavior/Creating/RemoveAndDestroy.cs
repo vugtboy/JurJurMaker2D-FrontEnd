@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RemoveAndDestroy : MonoBehaviour
 {
+    //als er een object zich bevint op de positie van een point van een 2 hoog, dan het object verwijderen en uit de lijst halen
     public ObjectTypes Object;
     public GameObject[] objects;
 
@@ -31,7 +32,7 @@ public class RemoveAndDestroy : MonoBehaviour
             }
         }
     }
-
+    //als we zelf gedelete worden de poinst uit de lijst halen en het object zelf uit de lijst met worldobjects van de saver halen(die gaat over het opslaan van de objecten in de game)
     void OnMouseOver()
     {
         if (Input.GetMouseButton(1))

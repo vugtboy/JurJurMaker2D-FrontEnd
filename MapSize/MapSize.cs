@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MapSize : MonoBehaviour
 {
+    //mapgroote aan kunnen passen in game, en deze goed instellen op de worldstorer voor als je de wereld opslaat
     public int maxLength = 199;
     public int maxHeigth = 99;
     private TemporaryWorldStorer world;

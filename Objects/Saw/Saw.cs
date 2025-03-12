@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Saw : MonoBehaviour
 {
+    //de zaag in playmode laten bewegen tussen 2 points
     public Transform[] points;
     public int currentPos;
     public float speed;

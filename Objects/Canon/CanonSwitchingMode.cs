@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CanonSwitchingMode : MonoBehaviour
 {
+    //kanon is wederom uizonderin op normale switchmode objecten, dus waarden van editkanon(rotatie en ingestelde loop rotatie) worden doorgegen
     public GameModeManager ModeManager;
 
     public GameObject EditObject;

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerOutOfBounds : MonoBehaviour
 {
+    //spelers posititie naar defaultpositie(rond 0,0 vgm) verplaatsen als de buiten de wereld is(speler mag niet verwijderd worden)
     public GameObject point1;
     public GameObject point2;
 

@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 public class ObjectMovement : MonoBehaviour
 {
+    //om een object op te kunnen tillen wanneer je hem vasthoudt met de linkermuisknop, zodat je het kunt verplaatsen
     public ObjectTypes placer;
     public float moveTimer;
     public bool selected;

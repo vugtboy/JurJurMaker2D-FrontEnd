@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 public class Login : MonoBehaviour
 {
+    //inlogen op de knop
     private LoginRepository client;
 
     public TMP_InputField email;
@@ -19,11 +20,14 @@ public class Login : MonoBehaviour
     {
         string email = this.email.text;
         string password = this.password.text;
+        // apicall via LoginRepo
         string result = await client.Login(email, password);
+        //als het resultaat goed is mag je inloggen
         if(result == "succes")
         {
             SceneManager.LoadScene("Worldview");
         }
+        //anders zijn je gegevens fout
         else
         {
             failedToLogin.SetActive(true);
